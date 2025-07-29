@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce</title>
+    <link rel="icon" href="🛒" />
+
+    <!-- Css-->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Font awesome icon-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <nav class="navbar">
+      <h1>Nostra</h1>
+      <div class="navbar-links">
+      <p class="navbar-link"><a href="index.html"> Home</a></p>
+        <p class="navbar-link"><a href="collection.html"> Collection</a></p>
+        <p class="navbar-link"><a href="contact.html"> Contact</a></p>
+     </div>
+
+      <div class="navbar-menu-toggle" onclick="showNavbar()">
+        <i class="fa-solid fa-bars"></i>
+        <!--<i class="fa-brands fa-searchengin"></i>-->
+      </div>
+    </nav>
+
+    <!--Side Navbar-->
+    <div class="side-navbar">
+      <p style="text-align: right" onclick="closeNavbar()">
+        <i class="fa-solid fa-xmark"></i>
+      </p>
+
+      <div class="side-navbar-links">
+         <p class="side-navbar-link"><a href="index.html"> Home</a></p>
+        <p class="side-navbar-link"><a href="collection.html"> Collection</a></p>
+        <p class="side-navbar-link"><a href="contact.html"> Contact</a></p>
+      
+      </div>
+    </div>
+
+    <!--Contact section-->
+    <div class="contact">
+        <h1>Contact us</h1>
+        <form class="contact-container">
+           <div class="form-content">
+            <p>Name:</p>
+            <input type="text" >
+            <p>Email:</p>
+            <input type="text" >
+            <p>Message:</p>
+            <input type="text" class="msg">
+            <button>Submit</button>
+             </div>
+        </form>
+
+    </div>
+    <!--Footer-->
+    <div class="footer">
+      <div class="footer-container">
+        <div class="footer-box-1">
+          <h2 class="headingText">Nostra</h2>
+          <p>The Standard chunk of Loem ipsum used since the 1500s is reproduced below for those interset</p>
+         <div class="footer--icon-container">
+          <i class="icon fa-brands fa-instagram" style="color:#ffffff;"></i>
+          <i class="icon fa-brands fa-twitter" style="color:#ffffff;"></i>
+          <i class="icon fa-brands fa-facebook" style="color:#ffffff;"></i>
+         </div>
+        </div>
+      </div>
+      <p class="subtitle">@ 2025 Nostra.com</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="collection.js"></script>
+  </body>
+</html>
