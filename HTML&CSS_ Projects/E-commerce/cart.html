@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+    <link rel="icon" href="🛒" />
+     <!-- Css-->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Font awesome icon-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+     <!--Navbar-->
+    <nav class="navbar">
+      <h1>Nostra</h1>
+      <div class="navbar-links">
+        <p class="navbar-link"><a href="index.html"> Home</a></p>
+        <p class="navbar-link"><a href="collection.html"> Collection</a></p>
+        <p class="navbar-link"><a href="contact.html"> Contact</a></p>
+        <p class="navbar-link"><a href="cart.html" style="font-size: larger;">🛒 </a></p>
+
+      </div>
+
+      <div class="navbar-menu-toggle" onclick="showNavbar()">
+        <i class="fa-solid fa-bars"></i>
+        <!--<i class="fa-brands fa-searchengin"></i>-->
+      </div>
+    </nav>
+
+    <!--Side Navbar-->
+    <div class="side-navbar">
+      <p style="text-align: right" onclick="closeNavbar()">
+        <i class="fa-solid fa-xmark"></i>
+      </p>
+
+      <div class="side-navbar-links">
+        <p class="side-navbar-link"><a href="index.html"> Home</a></p>
+        <p class="side-navbar-link"><a href="collection.html"> Collection</a></p>
+        <p class="side-navbar-link"><a href="contact.html"> Contact</a></p>
+         <p class="side-navbar-link"><a href="cart.html"style="font-size: larger;">🛒 </a></p>
+      </div>
+    </div>
+   <!--Cart-->
+   <div class="cart_heading">
+    <h1>Items in your cart 🛒</h1>
+   </div>
+   <div class="items_list"id="cartContainer">
+ 
+   </div>
+   <br>
+   <div class="cart-btn">
+   <button id="add-items"><a href="index.html"> Add More</a></button>
+    <button id="payment-items" ><a href="payment.html">To pay</button>
+   </div>
+   <!--Script to add and increase items-->
+  <script>
+  const items = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const container = document.getElementById('cartContainer');
+
+  // Safely initialize quantities array
+  let quantities = JSON.parse(localStorage.getItem('quantities'));
+  if (!quantities || quantities.length !== items.length) {
+    quantities = Array(items.length).fill(1);
+    localStorage.setItem('quantities', JSON.stringify(quantities));
+  }
+
+  // Render the cart
+  if (items.length > 0) {
+    items.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <h3>${item.name}</h3>
+        <img src="${item.image}" alt="${item.name}" style="max-width:200px">
+        <div id="add-elements-${index}">
+          <button onclick="increaseQuantity(${index})" style="font-size:30px;">+</button>
+          &nbsp;<span id="item-quantity-${index}">${quantities[index]}</span>&nbsp;
+          <button onclick="decreaseQuantity(${index})" style="font-size:30px;">-</button>
+          <button id="remove-items"onclick="removeItem(${index})">Remove</button>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+  } else {
+    container.innerText = "Your cart is empty.";
+  }
+
+  // Quantity functions
+  window.increaseQuantity = function(index) {
+    quantities[index]++;
+    localStorage.setItem('quantities', JSON.stringify(quantities));
+    document.getElementById(`item-quantity-${index}`).innerText = quantities[index];
+    updateTotals(); // update totals after change
+  };
+
+  window.decreaseQuantity = function(index) {
+    if (quantities[index] > 1) {
+      quantities[index]--;
+      localStorage.setItem('quantities', JSON.stringify(quantities));
+      document.getElementById(`item-quantity-${index}`).innerText = quantities[index];
+      updateTotals();
+    }
+  };
+
+  window.removeItem = function(index) {
+    items.splice(index, 1);
+    quantities.splice(index, 1);
+    localStorage.setItem('cartItems', JSON.stringify(items));
+    localStorage.setItem('quantities', JSON.stringify(quantities));
+    location.reload(); // Refresh cart
+  };
+
+  // Calculate and store totals
+  function updateTotals() {
+    const totalItems = items.length;
+    const totalQuantity = quantities.reduce((sum, qty) => sum + qty, 0);
+    let totalAmount = 0;
+
+    for (let i = 0; i < items.length; i++) {
+      const price = items[i].price || 1000; // fallback if no price field
+      totalAmount += price * quantities[i];
+    }
+
+    localStorage.setItem('totalItems', totalItems);
+    localStorage.setItem('totalQuantity', totalQuantity);
+    localStorage.setItem('totalAmount', totalAmount);
+  }
+
+  updateTotals(); // Initial call
+</script>
+
+   <!--Footer-->
+    <div class="footer">
+      <div class="footer-container">
+        <div class="footer-box-1">
+          <h2 class="headingText">Nostra</h2>
+          <p>The Standard chunk of Loem ipsum used since the 1500s is reproduced below for those interset</p>
+         <div class="footer--icon-container">
+          <i class="icon fa-brands fa-instagram" style="color:#ffffff;"></i>
+          <i class="icon fa-brands fa-twitter" style="color:#ffffff;"></i>
+          <i class="icon fa-brands fa-facebook" style="color:#ffffff;"></i>
+         </div>
+        </div>
+      </div>
+      <p class="subtitle">@ 2025 Nostra.com</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>E-commerce</title>
+    <link rel="icon" href="🛒" />
+
+    <!-- Css-->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Font awesome icon-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <nav class="navbar">
+      <h1>Nostra</h1>
+      <div class="navbar-links">
+        <p class="navbar-link"><a href="index.html"> Home</a></p>
+        <p class="navbar-link"><a href="collection.html"> Collection</a></p>
+        <p class="navbar-link"><a href="contact.html"> Contact</a></p>
+        <p class="navbar-link"><a href="cart.html" style="font-size: larger;">🛒 </a></p>
+
+      </div>
+
+      <div class="navbar-menu-toggle" onclick="showNavbar()">
+        <i class="fa-solid fa-bars"></i>
+        <!--<i class="fa-brands fa-searchengin"></i>-->
+      </div>
+    </nav>
+
+    <!--Side Navbar-->
+    <div class="side-navbar">
+      <p style="text-align: right" onclick="closeNavbar()">
+        <i class="fa-solid fa-xmark"></i>
+      </p>
+
+      <div class="side-navbar-links">
+        <p class="side-navbar-link"><a href="index.html"> Home</a></p>
+        <p class="side-navbar-link"><a href="collection.html"> Collection</a></p>
+        <p class="side-navbar-link"><a href="contact.html"> Contact</a></p>
+         <p class="side-navbar-link"><a href="cart.html"style="font-size: larger;">🛒 </a></p>
+      </div>
+    </div>
+
+  <!-- Payment content -->
+<div class="payment_heading">
+  <h1>Payment</h1>
+</div>
+
+<div class="pay_list" id="paymentContainer">
+  <div class="basicinfo">
+    <p>Total Items:</p>
+   
+    <br><br>
+    <p>Total Amount:</p>
+  </div>
+
+  <div class="payment-form">
+    <div class="form-group placeholder"></div>
+    <div class="form-group placeholder"></div>
+    <div class="form-group placeholder"></div>
+
+    <div class="cardDetails">
+      <label>Credit Card Info</label>
+      <div class="card-logo"></div>
+      <input type="text" value="255 *** *** *** 7812" readonly>
+
+      <div class="card-details">
+        <select>
+          <option>11/25</option>
+          <option>11/26</option>
+        </select>
+        <select>
+          <option>***</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="pay-btn">Pay Now</button>
+  </div>
+</div>
+ <button id="add-items" style="margin-left:50%;"><a href="cart.html"> Go back</a></button>
+   
+   <br>
+   <script>
+  const totalItems = localStorage.getItem('totalItems') || 0;
+  const totalQuantity = localStorage.getItem('totalQuantity') || 0;
+  const totalAmount = localStorage.getItem('totalAmount') || 0;
+
+  document.querySelector('.basicinfo').innerHTML = `
+    <p>Total Items: ${totalItems}</p>
+    <p>Total Quantity: ${totalQuantity}</p>
+    <br><br>
+    <p>Total Amount: ₹${totalAmount}</p>
+  `;
+  document.querySelector('.pay-btn').addEventListener('click', () => {
+  localStorage.removeItem('cartItems');
+  localStorage.removeItem('quantities');
+  localStorage.removeItem('totalItems');
+  localStorage.removeItem('totalQuantity');
+  localStorage.removeItem('totalAmount');
+  alert("Payment Successful!");
+  window.location.href = "index.html"; // or thank you page
+});
+</script>
+</body>
+</html>

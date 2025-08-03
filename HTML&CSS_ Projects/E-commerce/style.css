@@ -77,8 +77,20 @@ img{
     margin-bottom: 10px;
     background-color: #1d232c;
     color:white;
+    cursor:pointer;
+    box-shadow: 0 9px 9px #999;
+     
 }
 
+.header-btn :hover{
+      background-color:#e2e3e4 ;
+}
+.header-btn:active{
+    background-color:#5d6064 ;
+    box-sizing: larger;
+    box-shadow: 0 5px #c8c4c4;
+    transform: translateY(5px);
+}
 /*Service*/
 
 .service{
@@ -116,9 +128,9 @@ img{
     flex-basis:20%;
 }
 .new-arrival button,.most-wanted button{
-padding-left: 10%;
+padding-left: 5%;
 padding-bottom: 5%;
-padding-right: 10%;
+padding-right: 5%;
 padding-top: 5%;
 margin-top: 10px;
 color: #1d231d;
@@ -127,8 +139,26 @@ top:50%;
 left:18%;
 border-radius: 10px;
 border:none;
+
+}
+.addCart {
+ 
+  cursor: pointer;
+  transition: transform 0.2s ease; /* smooth animation */
+  
+}
+a:link,
+a:visited,
+a:hover,
+a:active{
+text-decoration: none;
+color: #1d231d;
+}
+.addCart:hover {
+  transform: scale(1.1); /* makes it 10% bigger */
 }
 
+/* Footer*/
 .news{
     display: flex;
     flex-direction: column;
@@ -148,10 +178,17 @@ border:none;
     background-color: #1D232C;
     border-radius: 10px;
     padding: 10px;
+    cursor:pointer;
+    box-shadow: 0 9px 9px #999;
 }
-
+.news button:active{
+    background-color:#5d6064 ;
+    box-sizing: larger;
+    box-shadow: 0 5px #c8c4c4;
+    transform: translateY(5px);
+}
 .footer{
-    margin-top: 20px;
+    margin-top: 20%;
     padding:40px;
     background-color: #1D232C ;
     color:#F2F4F7;
@@ -246,6 +283,162 @@ border:none;
     
 
 }
+
+/*Cart*/
+.cart_heading,.payment_heading{
+    background-color: #f7d218;
+    display: block;
+    padding:10px;
+    text-align: center;
+    margin-top: 20px;
+}
+.items_list{
+     background-color: #f0b66521;
+    color:rgb(34, 5, 5);
+    padding-top:5%;
+    padding-left: 10%;
+    padding-bottom: 5%;
+    display: block;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+    justify-content: space-around;
+    gap:30px;
+    
+    
+}
+#add-items,#remove-items,#payment-items{
+    background-color: #f7d218;
+    margin-left: 8%;
+    padding:20px;
+    top: 70%;
+    font-style: italic;
+    border-radius: 20px;
+    box-shadow: 0 8px #5d6064;
+    font-weight: 600;
+     cursor: pointer;
+     transition: transform 0.2s ease;
+}
+
+.cart-btn{
+  
+     display:flex;
+     justify-content: space-around;
+}
+#add-items:hover,#remove-items:hover,#payment-items:hover{
+transform: scale(1.1);
+}
+#add-elements{
+    display: flex;
+   margin-left: 30%;
+    align-content: center;
+}
+
+.pay_list {
+  background: linear-gradient(135deg, #f6e54b, #f65c70e1);
+  padding: 50px;
+  margin: 50px;
+  margin-right: 20%;
+  margin-left: 20%;
+  display: flex;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.basicinfo {
+  color: white;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.basicinfo p {
+  font-size: 1.8rem;
+  font-weight:600 ;
+  margin: 0;
+}
+
+.payment-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  min-width: 300px;
+  margin-left: 30%;
+  
+  
+}
+
+.form-group.placeholder {
+  background: #f2f2f2;
+  height: 14px;
+  width: 80%;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.cardDetails {
+  margin-top: 20px;
+  position: relative;
+  
+}
+
+.cardDetails label {
+  display: block;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.card-logo {
+  position: absolute;
+  top: 24px;
+  right: 10px;
+  width: 40px;
+  height: 25px;
+  background: url('https://img.icons8.com/color/48/mastercard-logo.png') no-repeat center;
+  background-size: contain;
+}
+
+.cardDetails input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.card-details {
+  display: flex;
+  gap: 10px;
+}
+
+.card-details select {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.pay-btn {
+  margin-top: 20px;
+  width: 100%;
+  background: #d26abf;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pay-btn:hover {
+  background: #c455ac;
+}
+
 /* Media Query */
 @media screen and (max-width:700px){
     .navbar-menu-toggle{
